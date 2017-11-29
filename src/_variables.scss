@@ -1,0 +1,10 @@
+
+$input-border: 1px solid #606060;
+$input-padding: 0.6em 0.8em;
+
+@mixin inputBlock() {
+    background: #ffffff;
+    border: $input-border;
+    font-size: inherit;
+    padding: $input-padding;
+}

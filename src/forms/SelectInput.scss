@@ -1,0 +1,31 @@
+@import "~src/variables";
+
+.select-input {
+    .dropdown__toggle {
+        color: red;
+        padding: 0;
+    }
+
+    .option {
+        padding: 12px 16px;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.075);
+        }
+    }
+
+    .option__title {
+        display: block;
+        line-height: 1.6em;
+    }
+
+    .option__text {
+        display: block;
+        margin-top: 1px;
+        margin-bottom: px;
+        font-size: 0.8em;
+        line-height: 1.4em;
+        color: #606060;
+    }
+}

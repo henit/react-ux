@@ -1,0 +1,37 @@
+.form {
+    // Layouts
+    &_horizontal {
+        .field {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 0.25em;
+        }
+
+        .field__label {
+            margin: 0;
+            line-height: inherit;
+            min-width: 160px;
+            // font-weight: normal;
+        }
+    }
+
+    &_inline {
+        .field {
+            display: inline-block;
+            margin-right: 1.5em;
+
+            .string-input,
+            .select-input {
+                width: auto;
+                min-width: 200px;
+            }
+        }
+
+        .field__label {
+            display: inline-block;
+            margin-right: 1em;
+        }
+    }
+}

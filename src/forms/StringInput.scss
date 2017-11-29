@@ -1,0 +1,38 @@
+@import "~src/variables";
+
+.string-input {
+    position: relative;
+    background: #ffffff;
+    display: inline-block;
+    width: 100%;
+
+    &__counter {
+        position: absolute;
+        top: 0.3em;
+        right: 0.3em;
+        font-size: 0.85em;
+        line-height: 1em;
+        color: #606060;
+
+        &_invalid {
+            color: #cf0000;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        // font-size: 14px;
+        @include inputBlock();
+        color: #404040;
+        transition: border 0.3s ease;
+    }
+
+    &_multiline &__input {
+        resize: none;
+    }
+
+    &__input:focus {
+        outline: none;
+        border: 1px solid #a0c0ff;
+    }
+}
