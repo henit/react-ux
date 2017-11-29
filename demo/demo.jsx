@@ -16,12 +16,7 @@ import 'regenerator-runtime/runtime'; // For ES2017-await & ES2015-generators
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Form from 'src/forms/Form';
-import Field from 'src/forms/Field';
-import Dropdown from 'src/forms/Dropdown';
-import StringInput from 'src/forms/StringInput';
-import SelectInput from 'src/forms/SelectInput';
-import Option from 'src/forms/Option';
+import { Form, Field, Dropdown, StringInput, SelectInput, Option } from 'src';
 import './demo.scss';
 import 'src/index.scss';
 
