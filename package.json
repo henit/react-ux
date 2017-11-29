@@ -1,6 +1,6 @@
 {
   "name": "react-ux",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Reusable react components for simplified UX development",
   "main": "lib/index.js",
   "files": [
