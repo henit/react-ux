@@ -8,16 +8,25 @@ export default class Input extends React.PureComponent {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
     }
 
     handleKeyDown(e) {
         if (e.keyCode === 13) {
             this.props.onPressEnter && this.props.onPressEnter();
         }
+        this.props.onKeyDown && this.props.onKeyDown(e);
+    }
+
+    handleKeyUp(e) {
+        this.props.onKeyUp && this.props.onKeyUp(e);
     }
 
     handleChange(e) {
-        this.props.onChange && this.props.onChange(e.target.value, this.props.path);
+        const inputValue = e.target.value;
+        const value = (inputValue && inputValue.length > 0) ? inputValue : (this.props.allowEmpty ? '' : undefined);
+        this.props.onChange && this.props.onChange(value, this.props.path);
     }
 
     render() {
@@ -37,7 +46,7 @@ export default class Input extends React.PureComponent {
 
         return (
             <input
-                className={ className ? bemCn(className)() : undefined }
+                className={ bemCn('input-block').mix(className)() }
                 type={ type }
                 value={ elementValue }
                 defaultValue={ elementDefaultValue }
@@ -45,7 +54,8 @@ export default class Input extends React.PureComponent {
                 onChange={ this.handleChange }
                 onFocus={ onFocus }
                 onBlur={ onBlur }
-                onKeyDown={ e => this.handleKeyDown(e) }
+                onKeyUp={ this.handleKeyUp }
+                onKeyDown={ this.handleKeyDown }
                 autoFocus={ autoFocus } />
         );
     }
@@ -60,10 +70,13 @@ Input.propTypes = {
         PropTypes.string,
         PropTypes.number
     ]),
+    allowEmpty: PropTypes.bool,
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    onKeyUp: PropTypes.func,
     onPressEnter: PropTypes.func
 };
 
@@ -71,6 +84,7 @@ Input.defaultProps = {
     path: '',
     value: '',
     type: 'text',
+    allowEmpty: false,
     maxHeight: 400,
     autoFocus: false
 };

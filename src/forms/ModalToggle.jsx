@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import bemCn from 'bem-cn';
+import Modal from '../layout/Modal';
 
-const block = bemCn('dropdown');
+const block = bemCn('modal-toggle');
 
-export default class Dropdown extends React.PureComponent {
+export default class ModalToggle extends React.PureComponent {
 
     constructor(props) {
         super(props);
@@ -13,7 +14,7 @@ export default class Dropdown extends React.PureComponent {
         this.handleInsideClick = this.handleInsideClick.bind(this);
     }
 
-    handleAddOutsideListener() {
+    /*handleAddOutsideListener() {
         if (document.addEventListener) {
             document.addEventListener('click', this.toggle);
         } else if (document.attachEvent) {
@@ -27,24 +28,25 @@ export default class Dropdown extends React.PureComponent {
         } else if (document.detachEvent) {
             document.detachEvent('onclick', this.toggle);
         }
-    }
+    }*/
 
     toggle() {
-        this.props.open ?
+        /*this.props.open ?
             this.handleRemoveOutsideListener()
             :
-            this.handleAddOutsideListener();
+            this.handleAddOutsideListener();*/
 
         this.props.onToggle && this.props.onToggle();
     }
 
-    componentWillUpdate(newProps) {
+    /*componentWillUpdate(newProps) {
         if (this.props.open && !newProps.open) {
             this.handleRemoveOutsideListener();
         }
-    }
+    }*/
 
     handleInsideClick(e) {
+        console.log('INSIDE CLICK');
         if (e.nativeEvent && e.nativeEvent.stopImmediatePropagation) {
             e.nativeEvent.stopImmediatePropagation();
         }
@@ -56,12 +58,13 @@ export default class Dropdown extends React.PureComponent {
             open,
             value,
             placeholder,
-            children
+            children,
+            barebones
         } = this.props;
 
         return (
             <div className={ block.mix(className)({ open })() }>
-                <a className={ block('toggle')() } onClick={ this.toggle }>
+                <a className={ block.mix('input-block')('toggle')() } onClick={ this.toggle }>
                     { value ?
                         <span className={ block('value')() }>{ value }</span>
                         :
@@ -70,24 +73,26 @@ export default class Dropdown extends React.PureComponent {
                 </a>
 
                 { children &&
-                    <div className={ block('options')() } onClickCapture={ this.handleInsideClick }>
+                    <Modal open={ open } onClose={ this.toggle } padding={ !barebones } background={ !barebones }>
                         { children }
-                    </div>
+                    </Modal>
                 }
             </div>
         );
     }
 }
 
-Dropdown.propTypes = {
+ModalToggle.propTypes = {
     className: PropTypes.string,
     open: PropTypes.bool,
     value: PropTypes.node,
     placeholder: PropTypes.string,
     children: PropTypes.node,
-    onToggle: PropTypes.func
+    onToggle: PropTypes.func,
+    barebones: PropTypes.bool
 };
 
-Dropdown.defaultProps = {
-    open: false
+ModalToggle.defaultProps = {
+    open: false,
+    barebones: false
 };

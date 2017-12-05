@@ -16,7 +16,8 @@ import 'regenerator-runtime/runtime'; // For ES2017-await & ES2015-generators
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Form, Field, Dropdown, StringInput, SelectInput, Option } from 'src';
+import { Form, Field, DropdownToggle, StringInput, SelectInput, Option, ModalToggle,
+    DateTimeDropdownInput } from 'src';
 import './demo.scss';
 import 'src/index.scss';
 
@@ -38,6 +39,12 @@ class Demo extends React.Component {
         if (path === 'dropdown1') {
             this.setState({
                 dropdown1open: false
+            });
+        }
+
+        if (path === 'modal1') {
+            this.setState({
+                modal1open: false
             });
         }
     }
@@ -108,8 +115,8 @@ class Demo extends React.Component {
                         onChange={ handleChange } />
                 </Field>
 
-                <h2>Dropdown</h2>
-                <Dropdown
+                <h2>DropdownToggle</h2>
+                <DropdownToggle
                     open={ state.dropdown1open }
                     onToggle={ () => this.setState({ dropdown1open: !state.dropdown1open }) }
                     value={ state.dropdown1 || <em>Nada...</em> }
@@ -117,7 +124,7 @@ class Demo extends React.Component {
                     <strong>Select one of theese:</strong><br />
                     <a onClick={ () => this.handleChange('This', 'dropdown1') }>This...</a><br />
                     <a onClick={ () => this.handleChange('That', 'dropdown1') }>That...</a>
-                </Dropdown>
+                </DropdownToggle>
 
 
                 <h2>SelectInput</h2>
@@ -137,6 +144,24 @@ class Demo extends React.Component {
                     </SelectInput>
                 </Field>
 
+
+                <h2>ModalToggle</h2>
+                <ModalToggle
+                    open={ state.modal1open }
+                    onToggle={ () => this.setState({ modal1open: !state.modal1open }) }
+                    value={ state.modal1 || <em>Nada...</em> }
+                >
+                    <strong>Select one of theese:</strong><br />
+                    <a onClick={ () => this.handleChange('This', 'modal1') }>This...</a><br />
+                    <a onClick={ () => this.handleChange('That', 'modal1') }>That...</a>
+                </ModalToggle>
+
+
+                <h2>DateTimeInput</h2>
+                <DateTimeDropdownInput
+                    path="dateTimeInput2"
+                    source={ this.state }
+                    onChange={ handleChange } />
 
                 <br /><br /><br /><br /><br />
             </div>

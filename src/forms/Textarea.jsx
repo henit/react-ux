@@ -8,16 +8,20 @@ export default class Textarea extends React.PureComponent {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
     }
 
     handleKeyDown(e) {
         if (e.keyCode === 13 && !e.shiftKey) {
             this.props.onPressEnter && this.props.onPressEnter();
         }
+        this.props.onKeyDown && this.props.onKeyDown(e);
     }
 
     handleKeyUp(e) {
         this.ajustHeight();
+        this.props.onKeyUp && this.props.onKeyUp(e);
     }
 
     ajustHeight() {
@@ -42,7 +46,9 @@ export default class Textarea extends React.PureComponent {
     }
 
     handleChange(e) {
-        this.props.onChange && this.props.onChange(e.target.value, this.props.path);
+        const inputValue = e.target.value;
+        const value = (inputValue && inputValue.length > 0) ? inputValue : (this.props.allowEmpty ? '' : undefined);
+        this.props.onChange && this.props.onChange(value, this.props.path);
     }
 
     render() {
@@ -62,15 +68,15 @@ export default class Textarea extends React.PureComponent {
         return (
             <textarea
                 rows="1"
-                className={ className ? bemCn(className)() : undefined }
+                className={ bemCn('input-block').mix(className)() }
                 value={ elementValue }
                 defaultValue={ elementDefaultValue }
                 placeholder={ placeholder }
                 onChange={ this.handleChange }
                 onFocus={ onFocus }
                 onBlur={ onBlur }
-                onKeyDown={ e => this.handleKeyDown(e) }
-                onKeyUp={ e => this.handleKeyUp(e) }
+                onKeyDown={ this.handleKeyDown }
+                onKeyUp={ this.handleKeyUp }
                 ref={ (input) => this._textarea = input }
                 autoFocus={ autoFocus } />
         );
@@ -85,18 +91,21 @@ Textarea.propTypes = {
         PropTypes.string,
         PropTypes.number
     ]),
+    allowEmpty: PropTypes.bool,
     maxHeight: PropTypes.number, // Pixels
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    onKeyUp: PropTypes.func,
     onPressEnter: PropTypes.func
 };
 
 Textarea.defaultProps = {
     path: '',
     value: '',
-    type: 'text',
+    allowEmpty: false,
     maxHeight: 400,
     autoFocus: false
 };

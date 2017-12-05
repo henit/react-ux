@@ -1,0 +1,35 @@
+@import "../variables";
+
+.modal {
+    z-index: $z-index-modal;
+    display: none;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &_open {
+        display: block;
+        opacity: 1;
+    }
+
+    &__contents {
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translateX(-50%);
+    }
+
+    &_background &__contents {
+        background: #fcfcfc;
+        box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &_padding &__contents {
+        padding: 16px;
+    }
+}

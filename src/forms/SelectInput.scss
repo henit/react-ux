@@ -1,13 +1,12 @@
-@import "~src/variables";
+@import "../variables";
 
 .select-input {
-    .dropdown__toggle {
-        color: red;
+    .input-block {
         padding: 0;
     }
 
     .option {
-        padding: 12px 16px;
+        padding: $input-padding;
         cursor: pointer;
 
         &:hover {

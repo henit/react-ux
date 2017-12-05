@@ -2,7 +2,7 @@ import _get from 'lodash/fp/get';
 import React from 'react';
 import PropTypes from 'prop-types';
 import bemCn from 'bem-cn';
-import Dropdown from './Dropdown';
+import DropdownToggle from './DropdownToggle';
 import Option from './Option';
 
 const block = bemCn('select-input');
@@ -47,7 +47,7 @@ export default class SelectInput extends React.PureComponent {
             || inputValue || <Option />;
 
         return (
-            <Dropdown className={ block.mix(className)() } open={ this.state.open } value={ dropdownValue } onToggle={ this.toggle }>
+            <DropdownToggle className={ block.mix(className)() } open={ this.state.open } value={ dropdownValue } onToggle={ this.toggle }>
                 { childrenArr.map((child, i) =>
                     React.isValidElement(child) ?
                         React.cloneElement(child, {
@@ -57,7 +57,7 @@ export default class SelectInput extends React.PureComponent {
                         :
                         child
                 ) }
-            </Dropdown>
+            </DropdownToggle>
         );
     }
 }

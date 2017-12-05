@@ -1,0 +1,17 @@
+@import "../variables";
+
+.input-block {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    background: #ffffff;
+    border: $input-border;
+    font-size: inherit;
+    padding: $input-padding;
+
+    &:focus {
+        border-color: #a0c0ff;
+    }
+
+    transition: border 0.3s ease;
+}

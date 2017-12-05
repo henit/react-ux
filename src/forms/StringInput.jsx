@@ -17,19 +17,23 @@ export default class TextInput extends React.PureComponent {
             path,
             value,
             source,
+            allowEmpty,
             counter,
             maxLength,
             autoFocus,
             onChange,
             onFocus,
-            onBlur
+            onBlur,
+            onKeyDown,
+            onKeyUp
         } = this.props;
 
         const inputValue = value !== undefined ? value : _get(path, source);
+        const empty = Boolean((typeof inputValue) !== 'string' || inputValue.length === 0);
         const invalid = Boolean(maxLength && inputValue.length > maxLength);
 
         return (
-            <div className={ block({ multiline }).mix(className)() }>
+            <div className={ block({ multiline, empty }).mix(className)() }>
                 { counter &&
                     <div className={ block('counter', { invalid })() }>
                         { inputValue.length }{ maxLength && ` / ${maxLength}` }
@@ -42,11 +46,12 @@ export default class TextInput extends React.PureComponent {
                         path={ path }
                         value={ inputValue }
                         placeholder={ placeholder }
+                        allowEmpty={ allowEmpty }
                         onChange={ onChange }
                         onFocus={ onFocus }
                         onBlur={ onBlur }
-                        onKeyDown={ e => this.handleKeyDown(e) }
-                        onKeyUp={ e => this.handleKeyUp(e) }
+                        onKeyDown={ onKeyDown }
+                        onKeyUp={ onKeyUp }
                         ref={ (input) => this._textarea = input }
                         autoFocus={ autoFocus } />
                     :
@@ -56,10 +61,12 @@ export default class TextInput extends React.PureComponent {
                         path={ path }
                         value={ inputValue }
                         placeholder={ placeholder }
+                        allowEmpty={ allowEmpty }
                         onChange={ onChange }
                         onFocus={ onFocus }
                         onBlur={ onBlur }
-                        onKeyDown={ e => this.handleKeyDown(e) }
+                        onKeyDown={ onKeyDown }
+                        onKeyUp={ onKeyUp }
                         autoFocus={ autoFocus } />
                 }
             </div>
@@ -77,6 +84,7 @@ TextInput.propTypes = {
         PropTypes.number
     ]),
     source: PropTypes.object,
+    allowEmpty: PropTypes.bool,
     counter: PropTypes.bool,
     maxLength: PropTypes.number, // Max value characters
     maxHeight: PropTypes.number, // Pixels
@@ -84,11 +92,14 @@ TextInput.propTypes = {
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    onKeyUp: PropTypes.func,
     onPressEnter: PropTypes.func
 };
 
 TextInput.defaultProps = {
     type: 'text',
+    allowEmpty: false,
     multiline: false,
     maxHeight: 400,
     autoFocus: false

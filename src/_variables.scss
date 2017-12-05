@@ -1,10 +1,11 @@
 
-$input-border: 1px solid #606060;
-$input-padding: 0.6em 0.8em;
+// Z-index groups
+$z-index-over: 10; // When element must be above for design purposes
+$z-index-overlay: 100; // Ex: Dropdown menu
+$z-index-modal: 200; // Ex: Modal window with backdrop
+$z-index-modal-overlay: 300; // Ex: Dropdown menu inside modal
+$z-index-drawer: 1100; // Ex: Application sidebar
+$z-index-application-overlay: 1200; // Ex: Notification boxes
 
-@mixin inputBlock() {
-    background: #ffffff;
-    border: $input-border;
-    font-size: inherit;
-    padding: $input-padding;
-}
+$input-border: 1px solid #a0a0a0;
+$input-padding: 0.6em 0.8em;

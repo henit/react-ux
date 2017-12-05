@@ -1,6 +1,6 @@
-@import "~src/variables";
+@import "../variables";
 
-.dropdown {
+.dropdown-toggle {
     position: relative;
     color: #000000;
     width: 100%;
@@ -11,10 +11,8 @@
     user-select: none;
 
     &__toggle {
-        display: block;
         color: inherit;
         white-space: nowrap;
-        @include inputBlock();
     }
 
     &__value {
