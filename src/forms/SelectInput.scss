@@ -1,16 +1,24 @@
 @import "../variables";
 
 .select-input {
-    .input-block {
-        padding: 0;
+    .dropdown-toggle__toggle {
+        .option,
+        .item {
+            // padding: 0; // Since inside input-block
+            // line-height: inherit; // Since inside input-block
+            cursor: pointer;
+
+            &:hover {
+                // background: rgba(0, 0, 0, 0.075);
+            }
+        }
     }
 
-    .option {
-        padding: $input-padding;
-        cursor: pointer;
-
-        &:hover {
-            background: rgba(0, 0, 0, 0.075);
+    .dropdown-toggle__options {
+        .option,
+        .item {
+            padding: 0.4em 1em;
+            cursor: pointer;
         }
     }
 

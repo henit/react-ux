@@ -1,5 +1,9 @@
 @import "../variables";
 
+// Input blocks are ux elements that represent a unified design for input elements
+// like text inputs or select dropdown inputs. They have a common class to avoid
+// repetative styling for similar-looking blocks for different type of inputs.
+
 .input-block {
     display: block;
     box-sizing: border-box;
@@ -7,6 +11,7 @@
     background: #ffffff;
     border: $input-border;
     font-size: inherit;
+    line-height: inherit;
     padding: $input-padding;
 
     &:focus {
@@ -14,4 +19,8 @@
     }
 
     transition: border 0.3s ease;
+}
+
+.input-block-item {
+
 }

@@ -1,8 +1,16 @@
 .field {
+    position: relative;
+
     &__label {
         display: block;
         font-weight: bold;
         line-height: 2em;
         margin-top: 0.5em;
+    }
+
+    &__right-actions {
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }

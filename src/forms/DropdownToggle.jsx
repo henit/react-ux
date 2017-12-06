@@ -54,19 +54,14 @@ export default class DropdownToggle extends React.PureComponent {
         const {
             className,
             open,
-            value,
-            placeholder,
+            toggle,
             children
         } = this.props;
 
         return (
             <div className={ block.mix(className)({ open })() }>
-                <a className={ block.mix('input-block')('toggle')() } onClick={ this.toggle }>
-                    { value ?
-                        <span className={ block('value')() }>{ value }</span>
-                        :
-                        <span className={ block('placeholder')() }>{ placeholder || '\u00a0' }</span>
-                    }
+                <a className={ block('toggle')() } onClick={ this.toggle }>
+                    { toggle || '\u00a0' }
                 </a>
 
                 { children &&
@@ -82,8 +77,7 @@ export default class DropdownToggle extends React.PureComponent {
 DropdownToggle.propTypes = {
     className: PropTypes.string,
     open: PropTypes.bool,
-    value: PropTypes.node,
-    placeholder: PropTypes.string,
+    toggle: PropTypes.node,
     children: PropTypes.node,
     onToggle: PropTypes.func
 };

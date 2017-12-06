@@ -14,39 +14,11 @@ export default class ModalToggle extends React.PureComponent {
         this.handleInsideClick = this.handleInsideClick.bind(this);
     }
 
-    /*handleAddOutsideListener() {
-        if (document.addEventListener) {
-            document.addEventListener('click', this.toggle);
-        } else if (document.attachEvent) {
-            document.attachEvent('onclick', this.toggle);
-        }
-    }
-
-    handleRemoveOutsideListener() {
-        if (document.removeEventListener) {
-            document.removeEventListener('click', this.toggle);
-        } else if (document.detachEvent) {
-            document.detachEvent('onclick', this.toggle);
-        }
-    }*/
-
     toggle() {
-        /*this.props.open ?
-            this.handleRemoveOutsideListener()
-            :
-            this.handleAddOutsideListener();*/
-
         this.props.onToggle && this.props.onToggle();
     }
 
-    /*componentWillUpdate(newProps) {
-        if (this.props.open && !newProps.open) {
-            this.handleRemoveOutsideListener();
-        }
-    }*/
-
     handleInsideClick(e) {
-        console.log('INSIDE CLICK');
         if (e.nativeEvent && e.nativeEvent.stopImmediatePropagation) {
             e.nativeEvent.stopImmediatePropagation();
         }
@@ -56,20 +28,15 @@ export default class ModalToggle extends React.PureComponent {
         const {
             className,
             open,
-            value,
-            placeholder,
+            toggle,
             children,
             barebones
         } = this.props;
 
         return (
             <div className={ block.mix(className)({ open })() }>
-                <a className={ block.mix('input-block')('toggle')() } onClick={ this.toggle }>
-                    { value ?
-                        <span className={ block('value')() }>{ value }</span>
-                        :
-                        <span className={ block('placeholder')() }>{ placeholder || '\u00a0' }</span>
-                    }
+                <a className={ block.mix('toggle')() } onClick={ this.toggle }>
+                    { toggle || '\u00a0' }
                 </a>
 
                 { children &&
@@ -85,8 +52,7 @@ export default class ModalToggle extends React.PureComponent {
 ModalToggle.propTypes = {
     className: PropTypes.string,
     open: PropTypes.bool,
-    value: PropTypes.node,
-    placeholder: PropTypes.string,
+    toggle: PropTypes.node,
     children: PropTypes.node,
     onToggle: PropTypes.func,
     barebones: PropTypes.bool

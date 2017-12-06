@@ -7,7 +7,7 @@ import Textarea from './Textarea';
 
 const block = bemCn('string-input');
 
-export default class TextInput extends React.PureComponent {
+export default class StringInput extends React.PureComponent {
 
     render() {
         const {
@@ -74,7 +74,7 @@ export default class TextInput extends React.PureComponent {
     }
 }
 
-TextInput.propTypes = {
+StringInput.propTypes = {
     className: PropTypes.string,
     placeholder: PropTypes.string,
     multiline: PropTypes.bool,
@@ -97,8 +97,7 @@ TextInput.propTypes = {
     onPressEnter: PropTypes.func
 };
 
-TextInput.defaultProps = {
-    type: 'text',
+StringInput.defaultProps = {
     allowEmpty: false,
     multiline: false,
     maxHeight: 400,

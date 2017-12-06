@@ -119,7 +119,7 @@ class Demo extends React.Component {
                 <DropdownToggle
                     open={ state.dropdown1open }
                     onToggle={ () => this.setState({ dropdown1open: !state.dropdown1open }) }
-                    value={ state.dropdown1 || <em>Nada...</em> }
+                    value={ state.dropdown1 || "Nada..." }
                 >
                     <strong>Select one of theese:</strong><br />
                     <a onClick={ () => this.handleChange('This', 'dropdown1') }>This...</a><br />
@@ -149,7 +149,8 @@ class Demo extends React.Component {
                 <ModalToggle
                     open={ state.modal1open }
                     onToggle={ () => this.setState({ modal1open: !state.modal1open }) }
-                    value={ state.modal1 || <em>Nada...</em> }
+                    value={ state.modal1 }
+                    placeholder="Nada..."
                 >
                     <strong>Select one of theese:</strong><br />
                     <a onClick={ () => this.handleChange('This', 'modal1') }>This...</a><br />
