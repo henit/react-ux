@@ -11,6 +11,8 @@ export default class DropdownToggle extends React.PureComponent {
 
         this.toggle = this.toggle.bind(this);
         this.handleInsideClick = this.handleInsideClick.bind(this);
+
+        props.open && this.handleAddOutsideListener();
     }
 
     handleAddOutsideListener() {
@@ -44,6 +46,10 @@ export default class DropdownToggle extends React.PureComponent {
         }
     }
 
+    componentWillUnmount() {
+        this.handleRemoveOutsideListener();
+    }
+
     handleInsideClick(e) {
         if (e.nativeEvent && e.nativeEvent.stopImmediatePropagation) {
             e.nativeEvent.stopImmediatePropagation();
@@ -55,11 +61,12 @@ export default class DropdownToggle extends React.PureComponent {
             className,
             open,
             toggle,
-            children
+            children,
+            barebones
         } = this.props;
 
         return (
-            <div className={ block.mix(className)({ open })() }>
+            <div className={ block.mix(className)({ open, styled: !barebones })() }>
                 <a className={ block('toggle')() } onClick={ this.toggle }>
                     { toggle || '\u00a0' }
                 </a>
@@ -79,9 +86,11 @@ DropdownToggle.propTypes = {
     open: PropTypes.bool,
     toggle: PropTypes.node,
     children: PropTypes.node,
-    onToggle: PropTypes.func
+    onToggle: PropTypes.func,
+    barebones: PropTypes.bool
 };
 
 DropdownToggle.defaultProps = {
-    open: false
+    open: false,
+    barebones: false
 };

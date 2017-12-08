@@ -7,6 +7,7 @@ const block = bemCn('modal');
 export default class Modal extends React.PureComponent {
 
     constructor(props) {
+        console.log('(MODAL) - constructor');
         super(props);
 
         this.handleBackdropClick = this.handleBackdropClick.bind(this);
@@ -31,14 +32,15 @@ export default class Modal extends React.PureComponent {
         const {
             className,
             open,
-            padding,
-            background,
+            // padding,
+            // background,
+            barebones,
             children
         } = this.props;
 
         return (
             <div
-                className={ block({ open }).mix(className)({ padding, background })() }
+                className={ block({ open }).mix(className)({ styled: !barebones })() }
                 onClick={ this.handleBackdropClick }
             >
                 <div className={ block('contents')() } onClick={ this.handleContentsClick }>
@@ -52,14 +54,16 @@ export default class Modal extends React.PureComponent {
 Modal.propTypes = {
     className: PropTypes.string,
     open: PropTypes.bool,
-    padding: PropTypes.bool,
-    background: PropTypes.bool,
+    // padding: PropTypes.bool,
+    // background: PropTypes.bool,
+    barebones: PropTypes.bool,
     children: PropTypes.node,
     onClose: PropTypes.func
 };
 
 Modal.defaultProps = {
     open: false,
-    padding: true,
-    background: true
+    // padding: true,
+    // background: true
+    barebones: false
 };

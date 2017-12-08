@@ -24,12 +24,18 @@
         transform: translateX(-50%);
     }
 
-    &_background &__contents {
+    &_styled &__contents {
+        background: #fcfcfc;
+        box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.2);
+        padding: 16px;
+    }
+
+    /*&_background &__contents {
         background: #fcfcfc;
         box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.2);
     }
 
     &_padding &__contents {
         padding: 16px;
-    }
+    }*/
 }

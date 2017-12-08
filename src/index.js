@@ -1,3 +1,4 @@
+export { default as ComponentToggle } from './forms/ComponentToggle';
 export { default as DateTimeDropdownInput } from './forms/DateTimeDropdownInput';
 export { default as DropdownToggle } from './forms/DropdownToggle';
 export { default as Field } from './forms/Field';

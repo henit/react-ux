@@ -40,7 +40,7 @@ export default class ModalToggle extends React.PureComponent {
                 </a>
 
                 { children &&
-                    <Modal open={ open } onClose={ this.toggle } padding={ !barebones } background={ !barebones }>
+                    <Modal open={ open } onClose={ this.toggle } barebones={ barebones }>
                         { children }
                     </Modal>
                 }
