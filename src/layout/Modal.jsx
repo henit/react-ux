@@ -7,7 +7,6 @@ const block = bemCn('modal');
 export default class Modal extends React.PureComponent {
 
     constructor(props) {
-        console.log('(MODAL) - constructor');
         super(props);
 
         this.handleBackdropClick = this.handleBackdropClick.bind(this);
@@ -32,8 +31,6 @@ export default class Modal extends React.PureComponent {
         const {
             className,
             open,
-            // padding,
-            // background,
             barebones,
             children
         } = this.props;
@@ -54,8 +51,6 @@ export default class Modal extends React.PureComponent {
 Modal.propTypes = {
     className: PropTypes.string,
     open: PropTypes.bool,
-    // padding: PropTypes.bool,
-    // background: PropTypes.bool,
     barebones: PropTypes.bool,
     children: PropTypes.node,
     onClose: PropTypes.func
@@ -63,7 +58,5 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
     open: false,
-    // padding: true,
-    // background: true
     barebones: false
 };
