@@ -16,7 +16,7 @@ import 'regenerator-runtime/runtime'; // For ES2017-await & ES2015-generators
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Form, Field, DropdownToggle, StringInput, SelectInput, Option, ModalToggle,
+import { Form, Field, DropdownToggle, StringInput, NumberInput, SelectInput, Option, ModalToggle,
     DateTimeDropdownInput } from 'src';
 import './demo.scss';
 import 'src/index.scss';
@@ -114,6 +114,15 @@ class Demo extends React.Component {
                         source={ this.state }
                         onChange={ handleChange } />
                 </Field>
+
+
+                <h2>NumberInput</h2>
+
+                <NumberInput
+                    path="numberInput1"
+                    value={ state.numberInput1 }
+                    onChange={ handleChange } />
+
 
                 <h2>DropdownToggle</h2>
                 <DropdownToggle

@@ -8,6 +8,16 @@ const block = bemCn('number-input');
 
 export default class NumberInput extends React.PureComponent {
 
+    constructor(props) {
+        super(props);
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(value, ...args) {
+        this.props.onChange && this.props.onChange(value !== undefined ? parseFloat(value) : undefined, ...args);
+    }
+
     render() {
         const {
             className,
@@ -17,7 +27,7 @@ export default class NumberInput extends React.PureComponent {
             source,
             allowEmpty,
             autoFocus,
-            onChange,
+            // onChange,
             onFocus,
             onBlur,
             onKeyDown,
@@ -36,7 +46,7 @@ export default class NumberInput extends React.PureComponent {
                     value={ inputValue }
                     placeholder={ placeholder }
                     allowEmpty={ allowEmpty }
-                    onChange={ onChange }
+                    onChange={ this.handleChange }
                     onFocus={ onFocus }
                     onBlur={ onBlur }
                     onKeyDown={ onKeyDown }
