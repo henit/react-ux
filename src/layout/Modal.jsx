@@ -40,8 +40,10 @@ export default class Modal extends React.PureComponent {
                 className={ block({ open }).mix(className)({ styled: !barebones })() }
                 onClick={ this.handleBackdropClick }
             >
-                <div className={ block('contents')() } onClick={ this.handleContentsClick }>
-                    { children }
+                <div className={ block('wrap')() }>
+                    <div className={ block('contents')() } onClick={ this.handleContentsClick }>
+                        { children }
+                    </div>
                 </div>
             </div>
         );

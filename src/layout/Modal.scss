@@ -11,17 +11,22 @@
     left: 0;
     right: 0;
     bottom: 0;
+    // text-align: center;
 
     &_open {
         display: block;
         opacity: 1;
     }
 
-    &__contents {
+    &__wrap {
         position: absolute;
         left: 50%;
         top: 20%;
-        transform: translateX(-50%);
+    }
+
+    &__contents {
+        position: relative;
+        left: -50%;
     }
 
     &_styled &__contents {

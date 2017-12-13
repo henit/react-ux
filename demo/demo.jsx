@@ -16,8 +16,8 @@ import 'regenerator-runtime/runtime'; // For ES2017-await & ES2015-generators
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Form, Field, DropdownToggle, StringInput, NumberInput, SelectInput, Option, ModalToggle,
-    DateTimeDropdownInput } from 'src';
+import { Form, Field, DropdownToggle, StringInput, NumberInput, SelectInput, Option,
+    Modal, ModalToggle, DateTimeDropdownInput } from 'src';
 import './demo.scss';
 import 'src/index.scss';
 
@@ -154,11 +154,39 @@ class Demo extends React.Component {
                 </Field>
 
 
+                <h2>Modal</h2>
+                <button onClick={ () => this.setState({ modal1: true }) }>Open</button>
+
+                <Modal open={ this.state.modal1 } onClose={ () => this.setState({ modal1: false }) }>
+                    This is a modal dialog<br />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </Modal>
+
+
                 <h2>ModalToggle</h2>
                 <ModalToggle
                     open={ state.modal1open }
                     onToggle={ () => this.setState({ modal1open: !state.modal1open }) }
-                    value={ state.modal1 }
+                    toggle={ state.modal1 }
                     placeholder="Nada..."
                 >
                     <strong>Select one of theese:</strong><br />
