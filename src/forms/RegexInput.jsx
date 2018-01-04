@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import bemCn from 'bem-cn';
 import Input from './Input';
 
-const block = bemCn('number-input');
+const block = bemCn('regex-input');
 const inputBlock = bemCn('input-block');
 
-export default class NumberInput extends React.PureComponent {
+export default class RegexInput extends React.PureComponent {
 
     constructor(props) {
         super(props);
@@ -15,20 +15,20 @@ export default class NumberInput extends React.PureComponent {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(value, ...args) {
-        this.props.onChange && this.props.onChange(value !== undefined ? parseFloat(value) : undefined, ...args);
+    handleChange(value = '') {
+        this.props.onChange && this.props.onChange(value, this.props.path);
     }
 
     render() {
         const {
             className,
             placeholder,
+            regex,
             path,
             value,
             source,
             allowEmpty,
             autoFocus,
-            // onChange,
             onFocus,
             onBlur,
             onKeyDown,
@@ -36,14 +36,14 @@ export default class NumberInput extends React.PureComponent {
         } = this.props;
 
         const inputValue = value !== undefined ? value : _get(path, source);
-        const empty = Boolean((typeof inputValue) !== 'string' || inputValue.length === 0);
+        const invalid = regex ? !(inputValue || '').match(new RegExp(regex)) : false;
 
         return (
             <Input
-                className={ block({ empty }).mix(inputBlock({ inner: true, empty }), className)() }
-                type="number"
+                className={ block.mix(inputBlock({ inner: true }), className)() }
                 path={ path }
                 value={ inputValue }
+                invalid={ invalid }
                 placeholder={ placeholder }
                 allowEmpty={ allowEmpty }
                 onChange={ this.handleChange }
@@ -56,9 +56,10 @@ export default class NumberInput extends React.PureComponent {
     }
 }
 
-NumberInput.propTypes = {
+RegexInput.propTypes = {
     className: PropTypes.string,
     placeholder: PropTypes.string,
+    regex: PropTypes.string,
     path: PropTypes.string,
     value: PropTypes.oneOfType([
         PropTypes.string,
@@ -72,11 +73,10 @@ NumberInput.propTypes = {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,
-    onKeyUp: PropTypes.func,
-    onPressEnter: PropTypes.func
+    onKeyUp: PropTypes.func
 };
 
-NumberInput.defaultProps = {
+RegexInput.defaultProps = {
     allowEmpty: false,
     autoFocus: false
 };

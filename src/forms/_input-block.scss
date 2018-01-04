@@ -10,17 +10,41 @@
     width: 100%;
     background: #ffffff;
     border: $input-border;
+    padding: $input-padding;
     font-size: inherit;
     line-height: inherit;
-    padding: $input-padding;
+    outline: none;
 
+    &_focus,
     &:focus {
         border-color: #a0c0ff;
     }
 
     transition: border 0.3s ease;
-}
 
-.input-block-item {
+    &_invalid,
+    &_invalid:focus {
+        border-color: #F44336;
+    }
 
+    // When inner is same as outer, set modifier
+    &_outer {
+        padding: 0;
+    }
+
+    // When inner is sub element
+    &__inner {
+        padding: $input-padding;
+        font-size: inherit;
+        line-height: inherit;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+    }
+
+    // Nesting
+    .input-block {
+        border: none;
+    }
 }

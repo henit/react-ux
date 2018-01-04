@@ -68,7 +68,7 @@ export default class Textarea extends React.PureComponent {
         return (
             <textarea
                 rows="1"
-                className={ bemCn('input-block').mix(className)() }
+                className={ className }
                 value={ elementValue }
                 defaultValue={ elementDefaultValue }
                 placeholder={ placeholder }

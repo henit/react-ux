@@ -1,0 +1,22 @@
+@import "../variables";
+@import "./input-block";
+
+.datetime-range-input {
+
+    &__row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .regex-input {
+
+    }
+
+    &__right {
+        white-space: nowrap;
+
+        padding-left: $input-padding-horizontal;
+        padding-right: $input-padding-horizontal;
+    }
+}

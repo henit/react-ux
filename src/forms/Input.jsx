@@ -35,6 +35,7 @@ export default class Input extends React.PureComponent {
             type,
             placeholder,
             value,
+            invalid,
             autoFocus,
             onChange,
             onFocus,
@@ -43,10 +44,12 @@ export default class Input extends React.PureComponent {
 
         const elementValue = (onChange && value !== undefined) ? value.toString() || '' : undefined;
         const elementDefaultValue = (!onChange && value !== undefined) ? value.toString() || '' : undefined;
+        const stringValue = value && value.toString() ? value.toString() : '';
+        const empty = Boolean(stringValue.length === 0);
 
         return (
             <input
-                className={ bemCn('input-block').mix(className)() }
+                className={ className }
                 type={ type }
                 value={ elementValue }
                 defaultValue={ elementDefaultValue }
@@ -70,6 +73,7 @@ Input.propTypes = {
         PropTypes.string,
         PropTypes.number
     ]),
+    invalid: PropTypes.bool,
     allowEmpty: PropTypes.bool,
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
@@ -84,6 +88,7 @@ Input.defaultProps = {
     path: '',
     value: '',
     type: 'text',
+    invalid: false,
     allowEmpty: false,
     maxHeight: 400,
     autoFocus: false

@@ -20,6 +20,10 @@
         }
     }
 
+    input[type="text"] {
+        // border: none;
+    }
+
     &_multiline &__input {
         resize: none;
     }

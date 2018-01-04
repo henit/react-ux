@@ -8,4 +8,6 @@ $z-index-drawer: 1100; // Ex: Application sidebar
 $z-index-application-overlay: 1200; // Ex: Notification boxes
 
 $input-border: 1px solid #a0a0a0;
-$input-padding: 0.6em 0.8em;
+$input-padding-vertical: 0.6em;
+$input-padding-horizontal: 0.8em;
+$input-padding: $input-padding-vertical $input-padding-horizontal;

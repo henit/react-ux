@@ -6,6 +6,7 @@ import Input from './Input';
 import Textarea from './Textarea';
 
 const block = bemCn('string-input');
+const inputBlock = bemCn('input-block');
 
 export default class StringInput extends React.PureComponent {
 
@@ -33,7 +34,7 @@ export default class StringInput extends React.PureComponent {
         const invalid = Boolean(maxLength && inputValue.length > maxLength);
 
         return (
-            <div className={ block({ multiline, empty }).mix(className)() }>
+            <div className={ block({ multiline, empty }).mix(inputBlock({ outer: true }), className)() }>
                 { counter &&
                     <div className={ block('counter', { invalid })() }>
                         { inputValue.length }{ maxLength && ` / ${maxLength}` }
@@ -42,7 +43,7 @@ export default class StringInput extends React.PureComponent {
                 { multiline ?
                     <Textarea
                         rows="1"
-                        className={ block('input')() }
+                        className={ inputBlock('inner')() }
                         path={ path }
                         value={ inputValue }
                         placeholder={ placeholder }
@@ -56,7 +57,7 @@ export default class StringInput extends React.PureComponent {
                         autoFocus={ autoFocus } />
                     :
                     <Input
-                        className={ block('input')() }
+                        className={ inputBlock('inner')() }
                         type="text"
                         path={ path }
                         value={ inputValue }

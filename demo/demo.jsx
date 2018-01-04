@@ -17,7 +17,7 @@ import 'regenerator-runtime/runtime'; // For ES2017-await & ES2015-generators
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Form, Field, DropdownToggle, StringInput, NumberInput, SelectInput, Option,
-    Modal, ModalToggle, DateTimeDropdownInput } from 'src';
+    Modal, ModalToggle, RegexInput, DateTimeInput, DatetimeRangeInput, DateTimeDropdownInput } from 'src';
 import './demo.scss';
 import 'src/index.scss';
 
@@ -28,7 +28,14 @@ class Demo extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
 
-        this.state = {};
+        this.state = {
+            dateTimeRange2start: '2018-01-01',
+            dateTimeRange3start: '2018-01-01 10:00',
+            dateTimeRange4start: '2018-01-01 10:00',
+            dateTimeRange4end: '2018-01-03 16:30',
+            dateTimeRange5end: '2018-01-03',
+            dateTimeRange6end: '2018-01-03 16:30'
+        };
     }
 
     handleChange(value, path) {
@@ -195,9 +202,72 @@ class Demo extends React.Component {
                 </ModalToggle>
 
 
+                <h2>RegexInput</h2>
+                <p><em>{ this.state.regexInput1 }</em></p>
+                <RegexInput
+                    regex="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                    path="regexInput1"
+                    source={ this.state }
+                    onChange={ handleChange } />
+
+
                 <h2>DateTimeInput</h2>
-                <DateTimeDropdownInput
-                    path="dateTimeInput2"
+                <p><em>{ this.state.dateTimeInput1 }</em></p>
+                <DateTimeInput
+                    path="dateTimeInput1"
+                    source={ this.state }
+                    onChange={ handleChange } />
+
+
+                {/*
+                dateTimeRange2start: '2018-01-01',
+                dateTimeRange3start: '2018-01-01 10:00',
+                dateTimeRange4start: '2018-01-01 10:00',
+                dateTimeRange4end: '2018-01-03 16:30',
+                dateTimeRange5end: '2018-01-03',
+                dateTimeRange6end: '2018-01-03 16:30'
+                */}
+
+                <h2>DatetimeRangeInput</h2>
+                <p><em>{ this.state.dateTimeRange1start } - { this.state.dateTimeRange1end }</em></p>
+                <DatetimeRangeInput
+                    pathStart="dateTimeRange1start"
+                    pathEnd="dateTimeRange1end"
+                    source={ this.state }
+                    onChange={ handleChange } />
+
+                <p><em>{ this.state.dateTimeRange2start } - { this.state.dateTimeRange2end }</em></p>
+                <DatetimeRangeInput
+                    pathStart="dateTimeRange2start"
+                    pathEnd="dateTimeRange2end"
+                    source={ this.state }
+                    onChange={ handleChange } />
+
+                <p><em>{ this.state.dateTimeRange3start } - { this.state.dateTimeRange3end }</em></p>
+                <DatetimeRangeInput
+                    pathStart="dateTimeRange3start"
+                    pathEnd="dateTimeRange3end"
+                    source={ this.state }
+                    onChange={ handleChange } />
+
+                <p><em>{ this.state.dateTimeRange4start } - { this.state.dateTimeRange4end }</em></p>
+                <DatetimeRangeInput
+                    pathStart="dateTimeRange4start"
+                    pathEnd="dateTimeRange4end"
+                    source={ this.state }
+                    onChange={ handleChange } />
+
+                <p><em>{ this.state.dateTimeRange5start } - { this.state.dateTimeRange5end }</em></p>
+                <DatetimeRangeInput
+                    pathStart="dateTimeRange5start"
+                    pathEnd="dateTimeRange5end"
+                    source={ this.state }
+                    onChange={ handleChange } />
+
+                <p><em>{ this.state.dateTimeRange6start } - { this.state.dateTimeRange6end }</em></p>
+                <DatetimeRangeInput
+                    pathStart="dateTimeRange6start"
+                    pathEnd="dateTimeRange6end"
                     source={ this.state }
                     onChange={ handleChange } />
 
