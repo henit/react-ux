@@ -13,7 +13,8 @@
     "test:eslint": "eslint ./src --ext .js,.jsx",
     "clean": "rimraf demo/public/* lib",
     "compile": "babel src --out-dir lib",
-    "postinstall": "npm run compile"
+    "prepublish": "npm run compile",
+    "postpublish": "npm run clean"
   },
   "repository": {
     "type": "git",
