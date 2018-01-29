@@ -24,6 +24,7 @@ export default class StringInput extends React.PureComponent {
             autoFocus,
             onChange,
             onFocus,
+            onPressEnter,
             onBlur,
             onKeyDown,
             onKeyUp
@@ -51,6 +52,7 @@ export default class StringInput extends React.PureComponent {
                         onChange={ onChange }
                         onFocus={ onFocus }
                         onBlur={ onBlur }
+                        onPressEnter={ onPressEnter }
                         onKeyDown={ onKeyDown }
                         onKeyUp={ onKeyUp }
                         ref={ (input) => this._textarea = input }
@@ -66,6 +68,7 @@ export default class StringInput extends React.PureComponent {
                         onChange={ onChange }
                         onFocus={ onFocus }
                         onBlur={ onBlur }
+                        onPressEnter={ onPressEnter }
                         onKeyDown={ onKeyDown }
                         onKeyUp={ onKeyUp }
                         autoFocus={ autoFocus } />
