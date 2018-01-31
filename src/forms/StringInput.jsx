@@ -30,7 +30,7 @@ export default class StringInput extends React.PureComponent {
             onKeyUp
         } = this.props;
 
-        const inputValue = value !== undefined ? value : _get(path, source);
+        const inputValue = (value !== undefined ? value : _get(path, source)) || '';
         const empty = Boolean((typeof inputValue) !== 'string' || inputValue.length === 0);
         const invalid = Boolean(maxLength && inputValue.length > maxLength);
 
