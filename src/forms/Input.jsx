@@ -27,6 +27,7 @@ export default class Input extends React.PureComponent {
         const inputValue = e.target.value;
         const value = (inputValue && inputValue.length > 0) ? inputValue : (this.props.allowEmpty ? '' : undefined);
         this.props.onChange && this.props.onChange(value, this.props.path);
+        this.props.onPathChange && this.props.onPathChange(this.props.path, value);
     }
 
     render() {
@@ -38,12 +39,13 @@ export default class Input extends React.PureComponent {
             invalid,
             autoFocus,
             onChange,
+            onPathChange,
             onFocus,
             onBlur
         } = this.props;
 
-        const elementValue = (onChange && value !== undefined) ? value.toString() || '' : undefined;
-        const elementDefaultValue = (!onChange && value !== undefined) ? value.toString() || '' : undefined;
+        const elementValue = ((onChange || onPathChange) && value !== undefined) ? value.toString() || '' : undefined;
+        const elementDefaultValue = (!(onChange || onPathChange) && value !== undefined) ? value.toString() || '' : undefined;
         const stringValue = value && value.toString() ? value.toString() : '';
         const empty = Boolean(stringValue.length === 0);
 
@@ -77,6 +79,7 @@ Input.propTypes = {
     allowEmpty: PropTypes.bool,
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,

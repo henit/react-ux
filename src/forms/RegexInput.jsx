@@ -17,6 +17,7 @@ export default class RegexInput extends React.PureComponent {
 
     handleChange(value = '') {
         this.props.onChange && this.props.onChange(value, this.props.path);
+        this.props.onPathChange && this.props.onPathChange(this.props.path, value);
     }
 
     render() {
@@ -70,6 +71,7 @@ RegexInput.propTypes = {
     counter: PropTypes.bool,
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,

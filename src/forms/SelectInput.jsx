@@ -27,7 +27,9 @@ export default class SelectInput extends React.PureComponent {
 
     handleChange(value) {
         this.toggle();
-        this.props.onChange && this.props.onChange(value, this.props.path);
+        const { onChange, onPathChange, path } = this.props;
+        onChange && onChange(value, path);
+        onPathChange && onPathChange(path, value);
     }
 
     render() {
@@ -98,6 +100,7 @@ SelectInput.propTypes = {
     source: PropTypes.object,
     children: PropTypes.node,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func
 };

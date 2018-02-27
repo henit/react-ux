@@ -29,7 +29,9 @@ export default class DateTimeDropdownInput extends React.PureComponent {
 
     handleChange(value) {
         this.toggle();
-        this.props.onChange && this.props.onChange(value, this.props.path);
+        const { onChange, onPathChange, path } = this.props;
+        onChange && onChange(value, path);
+        onPathChange && onPathChange(path, value);
     }
 
     render() {
@@ -89,6 +91,7 @@ DateTimeDropdownInput.propTypes = {
     maxHeight: PropTypes.number, // Pixels
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,

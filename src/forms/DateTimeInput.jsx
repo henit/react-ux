@@ -37,7 +37,9 @@ export default class DateTimeInput extends React.PureComponent {
     }
 
     handleChange(value, ...args) {
-        this.props.onChange && this.props.onChange(value !== undefined ? parseFloat(value) : undefined, ...args);
+        const { onChange, onPathChange } = this.props;
+        onChange && onChange(value !== undefined ? parseFloat(value) : undefined, ...args);
+        onPathChange && onPathChange(value !== undefined ? parseFloat(value) : undefined, ...args);
     }
 
     render() {
@@ -132,6 +134,7 @@ DateTimeInput.propTypes = {
     counter: PropTypes.bool,
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,

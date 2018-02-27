@@ -13,10 +13,16 @@ export default class NumberInput extends React.PureComponent {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
+        this.handlePathChange = this.handlePathChange.bind(this);
     }
 
     handleChange(value, ...args) {
         this.props.onChange && this.props.onChange(value !== undefined ? parseFloat(value) : undefined, ...args);
+
+    }
+
+    handlePathChange(path, value) {
+        this.props.onPathChange && this.props.onPathChange(path, value !== undefined ? parseFloat(value) : undefined);
     }
 
     render() {
@@ -47,6 +53,7 @@ export default class NumberInput extends React.PureComponent {
                 placeholder={ placeholder }
                 allowEmpty={ allowEmpty }
                 onChange={ this.handleChange }
+                onPathChange={ this.handlePathChange }
                 onFocus={ onFocus }
                 onBlur={ onBlur }
                 onKeyDown={ onKeyDown }
@@ -69,6 +76,7 @@ NumberInput.propTypes = {
     counter: PropTypes.bool,
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,

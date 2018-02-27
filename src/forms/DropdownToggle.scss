@@ -2,7 +2,6 @@
 
 .dropdown-toggle {
     position: relative;
-    color: #000000;
     width: 100%;
 
     -webkit-user-select: none;
@@ -11,8 +10,8 @@
     user-select: none;
 
     &__toggle {
-        color: inherit;
         white-space: nowrap;
+        color: inherit;
     }
 
     &__options {
@@ -44,6 +43,7 @@
 
     &_styled &__options {
         background: #ffffff;
+        color: #000000;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 2px;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);

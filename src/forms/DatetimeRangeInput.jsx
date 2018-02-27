@@ -64,31 +64,38 @@ export default class DatetimeRangeInput extends React.PureComponent {
     }
 
     toggleTime() {
-        const { pathStart, pathEnd, onChange, onChangeStart, onChangeEnd } = this.props;
+        const { pathStart, pathEnd, onChange, onPathChange, onChangeStart, onPathChangeStart,
+            onChangeEnd, onPathChangeEnd } = this.props;
 
         if (this.includeTime) {
             if (this.valueStart) {
                 const dateStart = this.valueStart.slice(0, 10);
                 if (dateStart !== this.valueStart) {
                     onChange && onChange(dateStart, pathStart);
+                    onPathChange && onPathChange(pathStart, dateStart);
                 }
             }
             if (this.valueEnd) {
                 const dateEnd = this.valueEnd.slice(0, 10);
                 if (dateEnd !== this.valueEnd) {
                     onChange && onChange(dateEnd, pathEnd);
+                    onPathChange && onPathChange(pathEnd, dateEnd);
                 }
             }
         } else {
             if (this.valueStart) {
                 const dtStart = moment(this.valueStart).format();
                 onChange && onChange(dtStart, pathStart);
+                onPathChange && onPathChange(pathStart, dtStart);
                 onChangeStart && onChangeStart(dtStart, pathStart);
+                onPathChangeStart && onPathChangeStart(pathStart, dtStart);
             }
             if (this.valueEnd) {
                 const dtEnd = moment(this.valueEnd).format();
                 onChange && onChange(dtEnd, pathEnd);
+                onPathChange && onPathChange(pathEnd, dtEnd);
                 onChangeEnd && onChangeEnd(dtEnd, pathEnd);
+                onPathChangeEnd && onPathChangeEnd(pathEnd, dtEnd);
             }
         }
     }
@@ -163,17 +170,21 @@ export default class DatetimeRangeInput extends React.PureComponent {
     }
 
     handleChangeStart(dt) {
-        const { pathStart, onChange, onChangeStart } = this.props;
+        const { pathStart, onChange, onPathChange, onChangeStart, onPathChangeStart } = this.props;
 
         onChange && onChange(dt, pathStart);
+        onPathChange && onPathChange(pathStart, dt);
         onChangeStart && onChangeStart(dt, pathStart);
+        onPathChangeStart && onPathChangeStart(pathStart, dt);
     }
 
     handleChangeEnd(dt) {
-        const { pathEnd, onChange, onChangeEnd } = this.props;
+        const { pathEnd, onChange, onPathChange, onChangeEnd, onPathChangeEnd } = this.props;
 
         onChange && onChange(dt, pathEnd);
+        onPathChange && onPathChange(pathEnd, dt);
         onChangeEnd && onChangeEnd(dt, pathEnd);
+        onPathChangeEnd && onPathChangeEnd(pathEnd, dt);
     }
 
     render() {
@@ -263,8 +274,11 @@ DatetimeRangeInput.propTypes = {
     toggleEnd: PropTypes.node,
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onChangeStart: PropTypes.func,
+    onPathChangeStart: PropTypes.func,
     onChangeEnd: PropTypes.func,
+    onPathChangeEnd: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,

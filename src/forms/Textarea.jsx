@@ -49,6 +49,7 @@ export default class Textarea extends React.PureComponent {
         const inputValue = e.target.value;
         const value = (inputValue && inputValue.length > 0) ? inputValue : (this.props.allowEmpty ? '' : undefined);
         this.props.onChange && this.props.onChange(value, this.props.path);
+        this.props.onPathChange && this.props.onPathChange(this.props.path, value);
     }
 
     render() {
@@ -95,6 +96,7 @@ Textarea.propTypes = {
     maxHeight: PropTypes.number, // Pixels
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,

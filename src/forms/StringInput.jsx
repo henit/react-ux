@@ -23,6 +23,7 @@ export default class StringInput extends React.PureComponent {
             maxLength,
             autoFocus,
             onChange,
+            onPathChange,
             onFocus,
             onPressEnter,
             onBlur,
@@ -50,6 +51,7 @@ export default class StringInput extends React.PureComponent {
                         placeholder={ placeholder }
                         allowEmpty={ allowEmpty }
                         onChange={ onChange }
+                        onPathChange={ onPathChange }
                         onFocus={ onFocus }
                         onBlur={ onBlur }
                         onPressEnter={ onPressEnter }
@@ -66,6 +68,7 @@ export default class StringInput extends React.PureComponent {
                         placeholder={ placeholder }
                         allowEmpty={ allowEmpty }
                         onChange={ onChange }
+                        onPathChange={ onPathChange }
                         onFocus={ onFocus }
                         onBlur={ onBlur }
                         onPressEnter={ onPressEnter }
@@ -94,6 +97,7 @@ StringInput.propTypes = {
     maxHeight: PropTypes.number, // Pixels
     autoFocus: PropTypes.bool,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,

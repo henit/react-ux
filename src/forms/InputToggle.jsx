@@ -29,6 +29,7 @@ export default class InputToggle extends React.PureComponent {
     handleChange(value) {
         this.toggle();
         this.props.onChange && this.props.onChange(value, this.props.path);
+        this.props.onPathChange && this.props.onPathChange(this.props.path, value);
     }
 
     render() {
@@ -130,6 +131,7 @@ InputToggle.propTypes = {
     source: PropTypes.object,
     children: PropTypes.node,
     onChange: PropTypes.func,
+    onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func
 };
