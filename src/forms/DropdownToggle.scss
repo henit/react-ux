@@ -1,8 +1,8 @@
 @import "../variables";
 
 .dropdown-toggle {
+    display: inline-block;
     position: relative;
-    width: 100%;
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -28,6 +28,34 @@
         transition: transform 0.05s linear,
                     opacity 0.05s linear,
                     visibility 0s linear 0.05s;
+    }
+
+    &_align_top-left &__options {
+        top: 100%;
+        left: 0;
+        right: auto;
+        bottom: auto;
+    }
+
+    &_align_top-right &__options {
+        top: 100%;
+        right: 0;
+        left: auto;
+        bottom: auto;
+    }
+
+    &_align_bottom-left &__options {
+        bottom: 100%;
+        left: 0;
+        right: auto;
+        top: auto;
+    }
+
+    &_align_bottom-right &__options {
+        bottom: 100%;
+        right: 0;
+        left: auto;
+        top: auto;
     }
 
     &_open &__options {

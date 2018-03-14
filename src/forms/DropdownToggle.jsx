@@ -62,11 +62,12 @@ export default class DropdownToggle extends React.PureComponent {
             open,
             toggle,
             children,
-            barebones
+            barebones,
+            align
         } = this.props;
 
         return (
-            <div className={ block.mix(className)({ open, styled: !barebones })() }>
+            <div className={ block.mix(className)({ open, align, styled: !barebones })() }>
                 <a className={ block('toggle')() } onClick={ this.toggle }>
                     { toggle || '\u00a0' }
                 </a>
@@ -87,10 +88,13 @@ DropdownToggle.propTypes = {
     toggle: PropTypes.node,
     children: PropTypes.node,
     onToggle: PropTypes.func,
-    barebones: PropTypes.bool
+    barebones: PropTypes.bool,
+    align: PropTypes.oneOf(['top-left', 'top-right', 'bottom-left', 'bottom-right'])
 };
 
 DropdownToggle.defaultProps = {
     open: false,
-    barebones: false
+    barebones: false,
+    align: 'top-left'
+
 };
