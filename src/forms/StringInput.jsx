@@ -50,6 +50,7 @@ export default class StringInput extends React.PureComponent {
                         value={ inputValue }
                         placeholder={ placeholder }
                         allowEmpty={ allowEmpty }
+                        maxLength={ maxLength }
                         onChange={ onChange }
                         onPathChange={ onPathChange }
                         onFocus={ onFocus }
@@ -67,6 +68,7 @@ export default class StringInput extends React.PureComponent {
                         value={ inputValue }
                         placeholder={ placeholder }
                         allowEmpty={ allowEmpty }
+                        maxLength={ maxLength }
                         onChange={ onChange }
                         onPathChange={ onPathChange }
                         onFocus={ onFocus }

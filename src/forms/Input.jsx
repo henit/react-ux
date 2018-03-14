@@ -38,6 +38,7 @@ export default class Input extends React.PureComponent {
             value,
             invalid,
             autoFocus,
+            maxLength,
             onChange,
             onPathChange,
             onFocus,
@@ -56,6 +57,7 @@ export default class Input extends React.PureComponent {
                 value={ elementValue }
                 defaultValue={ elementDefaultValue }
                 placeholder={ placeholder }
+                maxLength={ maxLength }
                 onChange={ this.handleChange }
                 onFocus={ onFocus }
                 onBlur={ onBlur }
@@ -78,6 +80,7 @@ Input.propTypes = {
     invalid: PropTypes.bool,
     allowEmpty: PropTypes.bool,
     autoFocus: PropTypes.bool,
+    maxLength: PropTypes.number, // Max value characters
     onChange: PropTypes.func,
     onPathChange: PropTypes.func,
     onFocus: PropTypes.func,

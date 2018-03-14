@@ -58,6 +58,7 @@ export default class Textarea extends React.PureComponent {
             placeholder,
             value,
             autoFocus,
+            maxLength,
             onChange,
             onFocus,
             onBlur
@@ -73,6 +74,7 @@ export default class Textarea extends React.PureComponent {
                 value={ elementValue }
                 defaultValue={ elementDefaultValue }
                 placeholder={ placeholder }
+                maxLength={ maxLength }
                 onChange={ this.handleChange }
                 onFocus={ onFocus }
                 onBlur={ onBlur }
@@ -95,6 +97,7 @@ Textarea.propTypes = {
     allowEmpty: PropTypes.bool,
     maxHeight: PropTypes.number, // Pixels
     autoFocus: PropTypes.bool,
+    maxLength: PropTypes.number, // Max value characters
     onChange: PropTypes.func,
     onPathChange: PropTypes.func,
     onFocus: PropTypes.func,
