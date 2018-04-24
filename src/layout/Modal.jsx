@@ -14,7 +14,6 @@ export default class Modal extends React.PureComponent {
     }
 
     handleBackdropClick() {
-        console.log('BACKDROP CLICK');
         if (this.props.onClose) {
             this.props.onClose();
         }
